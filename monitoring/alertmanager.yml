@@ -1,0 +1,8 @@
+route:
+  receiver: "n8n"
+
+receivers:
+  - name: "n8n"
+    webhook_configs:
+      - url: "http://${N8N_IP}:5678/webhook/prometheus-alert"
+

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-Tier App Frontend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .btn {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to 3-Tier Application (Frontend)</h1>
+    <p>Click the button below to call the Backend API:</p>
+
+    <button class="btn" onclick="callBackend()">Call /hello API</button>
+
+    <div id="output"></div>
+
+<script>
+    function callBackend() {
+        fetch("http://98.92.181.56:8080/hello")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("output").innerHTML = "Backend says: " + data;
+            })
+            .catch(err => {
+                document.getElementById("output").innerHTML = "Error: Cannot reach backend";
+            });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS sampledb;
+
+USE sampledb;
+
+CREATE TABLE IF NOT EXISTS test(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+INSERT INTO test(name) VALUES ('first row');
+

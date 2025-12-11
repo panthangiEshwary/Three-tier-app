@@ -1,0 +1,35 @@
+groups:
+  - name: basic-alerts
+    rules:
+
+      - alert: AppDown
+        expr: up{job="spring-app"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: "Spring Boot Application is DOWN"
+
+      - alert: NodeExporterDown
+        expr: up{job="node-exporter"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: "Node Exporter is DOWN"
+
+      - alert: HighCPUUsage
+        expr: (1 - avg(rate(node_cpu_seconds_total{mode="idle"}[2m]))) * 100 > 80
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          description: "High CPU Usage (>80%)"
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 75
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          description: "High Memory Usage (>75%)"
