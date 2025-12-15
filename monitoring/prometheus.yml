@@ -13,8 +13,8 @@ scrape_configs:
   - job_name: 'spring-app'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['${APP_IP}:8080']
+      - targets: ['172.31.19.251:8080']
 
   - job_name: 'node-exporter'
     static_configs:
-      - targets: ['${NODE_EXPORTER_IP}:9100']
+      - targets: ['172.31.19.251:9100']
